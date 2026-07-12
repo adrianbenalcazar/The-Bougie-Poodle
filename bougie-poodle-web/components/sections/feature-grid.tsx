@@ -13,7 +13,7 @@ export function FeatureGrid({ features }: { features: Feature[] }) {
             <div className="mx-auto flex h-11 w-11 items-center justify-center rounded-full bg-blush text-bougie-bright sm:mx-0">
               <Icon className="h-5 w-5" strokeWidth={1.6} />
             </div>
-            <h3 className="mt-4 font-display text-lg text-ink">{f.title}</h3>
+            <h3 className="mt-4 font-display text-lg">{f.title}</h3>
             <p className="mt-2 text-sm leading-relaxed text-stone">{f.description}</p>
           </FadeIn>
         );

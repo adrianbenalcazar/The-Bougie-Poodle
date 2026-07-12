@@ -22,7 +22,7 @@ export function SectionHeading({
       <h2
         className={cn(
           "text-balance-pretty font-display text-3xl font-medium sm:text-4xl lg:text-[2.75rem]",
-          tone === "dark" ? "text-cream" : "text-ink",
+          tone === "dark" && "text-cream",
         )}
       >
         {title}

@@ -35,7 +35,7 @@ export function PageHero({
             <span className="h-1.5 w-1.5 rounded-full bg-bougie-bright" aria-hidden="true" />
             {eyebrow}
           </p>
-          <h1 className="max-w-2xl text-balance-pretty font-display text-4xl font-medium leading-tight sm:text-5xl lg:text-6xl">
+          <h1 className="max-w-2xl text-balance-pretty font-display text-4xl font-medium leading-tight text-cream sm:text-5xl lg:text-6xl">
             {title}
           </h1>
           <p className="mt-5 max-w-xl text-lg leading-relaxed text-cream/70">{subtitle}</p>

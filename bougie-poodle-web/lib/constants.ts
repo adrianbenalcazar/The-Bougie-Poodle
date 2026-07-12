@@ -31,7 +31,7 @@ export const BUSINESS = {
     facebook: "https://www.facebook.com/thebougiepoodle",
     tiktok: "https://www.tiktok.com/@thebougiepoodle",
   },
-  founded: 2019,
+  founded: 2026,
   ratingValue: "5.0",
   reviewCount: "214",
 } as const;

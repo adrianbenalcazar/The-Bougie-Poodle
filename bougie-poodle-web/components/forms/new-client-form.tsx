@@ -38,7 +38,7 @@ export function NewClientForm() {
     return (
       <div className="flex flex-col items-center gap-3 rounded-2xl border border-sand/70 bg-white px-8 py-14 text-center">
         <CheckCircle2 className="h-10 w-10 text-bougie" strokeWidth={1.5} />
-        <h3 className="font-display text-xl text-ink">Request received!</h3>
+        <h3 className="font-display text-xl">Request received!</h3>
         <p className="max-w-sm text-sm text-stone">
           We&apos;ll call you within one business day to learn more about your pet and provide a personalized quote.
           In a hurry? Call us directly at{" "}
@@ -129,7 +129,7 @@ export function NewClientForm() {
         type="submit"
         size="lg"
         disabled={isSubmitting}
-        className="h-14 w-full gap-2 rounded-full bg-bougie text-base font-semibold text-cream hover:bg-bougie-bright sm:w-auto sm:px-10"
+        className="h-14 w-full gap-2 rounded-full bg-bougie text-base font-semibold text-cream hover:bg-bougie/90 sm:w-auto sm:px-10"
       >
         {isSubmitting && <Loader2 className="h-4 w-4 animate-spin" />}
         Request a Callback

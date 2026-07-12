@@ -12,6 +12,7 @@
   --font-heading: var(--font-display);
   --font-wordmark: var(--font-wordmark);
   --color-ink: var(--ink);
+  --color-heading: var(--heading);
   --color-cream: var(--cream);
   --color-blush: var(--blush);
   --color-bougie: var(--bougie);
@@ -57,17 +58,19 @@
 }
 
 :root {
-  /* The Bougie Poodle brand palette
-     --bougie is the accessible, default-use brand red (text/buttons, 7:1 on cream).
-     --bougie-bright is the true vivid red from the logo — reserved for hover states,
-     icon accents, and non-text/logo marks where WCAG text-contrast rules don't apply. */
-  --ink: #1b1815;
-  --cream: #faf6f1;
-  --blush: #fbe1dc;
-  --bougie: #9c2a1b;
-  --bougie-bright: #e8412c;
-  --sand: #e4d9cc;
-  --stone: #6b655f;
+  /* The Bougie Poodle brand palette — client-mandated, non-negotiable hex values.
+     Proportion rule: ~70% light backgrounds (cream/white), ~20% pink (blush/sand),
+     ~10% red (bougie) reserved for buttons, CTAs, active links, and icon accents.
+     Red fails small-text AA contrast by design (per the client's own scoping), so
+     labels/errors/captions use --heading instead — see .eyebrow and form components. */
+  --ink: #1a1a1a; /* body text */
+  --heading: #5c2b2b; /* headings + accent/label text */
+  --cream: #fff5f5; /* main page background */
+  --blush: #ffdcdc; /* card / highlighted-section background */
+  --sand: #ffb3b3; /* secondary accent — hover states, dividers, subtle highlights */
+  --stone: #805050; /* muted secondary text — warm, not gray */
+  --bougie: #ff1d1d; /* primary brand red */
+  --bougie-bright: #ff1d1d;
 
   --background: var(--cream);
   --foreground: var(--ink);
@@ -76,19 +79,19 @@
   --popover: #ffffff;
   --popover-foreground: var(--ink);
   --primary: var(--bougie);
-  --primary-foreground: var(--cream);
+  --primary-foreground: #ffffff;
   --secondary: var(--blush);
-  --secondary-foreground: var(--ink);
-  --muted: #f2ece4;
+  --secondary-foreground: var(--heading);
+  --muted: #fff0f0;
   --muted-foreground: var(--stone);
   --accent: var(--blush);
-  --accent-foreground: var(--bougie);
+  --accent-foreground: var(--heading);
   --destructive: var(--bougie);
   --border: var(--sand);
   --input: var(--sand);
   --ring: var(--bougie);
   --chart-1: var(--bougie-bright);
-  --chart-2: var(--bougie);
+  --chart-2: var(--heading);
   --chart-3: var(--stone);
   --chart-4: var(--sand);
   --chart-5: var(--ink);
@@ -96,51 +99,52 @@
   --sidebar: var(--cream);
   --sidebar-foreground: var(--ink);
   --sidebar-primary: var(--bougie);
-  --sidebar-primary-foreground: var(--cream);
+  --sidebar-primary-foreground: #ffffff;
   --sidebar-accent: var(--blush);
-  --sidebar-accent-foreground: var(--ink);
+  --sidebar-accent-foreground: var(--heading);
   --sidebar-border: var(--sand);
   --sidebar-ring: var(--bougie);
 }
 
 .dark {
-  --ink: #f5efe8;
-  --cream: #14120f;
-  --blush: #2a1c19;
-  --bougie: #ff5b42;
-  --bougie-bright: #ffb3a3;
-  --sand: #332c24;
-  --stone: #a89f95;
+  --ink: #fff5f5;
+  --heading: #ffb3b3;
+  --cream: #1a1a1a;
+  --blush: #3a2323;
+  --sand: #5c2b2b;
+  --stone: #d99999;
+  --bougie: #ff1d1d;
+  --bougie-bright: #ff1d1d;
 
   --background: var(--cream);
   --foreground: var(--ink);
-  --card: #1c1916;
+  --card: #241616;
   --card-foreground: var(--ink);
-  --popover: #1c1916;
+  --popover: #241616;
   --popover-foreground: var(--ink);
   --primary: var(--bougie);
-  --primary-foreground: #14120f;
+  --primary-foreground: #ffffff;
   --secondary: var(--blush);
   --secondary-foreground: var(--ink);
-  --muted: #201c18;
+  --muted: #291a1a;
   --muted-foreground: var(--stone);
   --accent: var(--blush);
-  --accent-foreground: var(--bougie);
+  --accent-foreground: var(--heading);
   --destructive: var(--bougie);
   --border: var(--sand);
   --input: var(--sand);
   --ring: var(--bougie);
   --chart-1: var(--bougie-bright);
-  --chart-2: var(--bougie);
+  --chart-2: var(--heading);
   --chart-3: var(--stone);
   --chart-4: var(--sand);
   --chart-5: var(--ink);
   --sidebar: var(--cream);
   --sidebar-foreground: var(--ink);
   --sidebar-primary: var(--bougie);
-  --sidebar-primary-foreground: #14120f;
+  --sidebar-primary-foreground: #ffffff;
   --sidebar-accent: var(--blush);
-  --sidebar-accent-foreground: var(--ink);
+  --sidebar-accent-foreground: var(--heading);
   --sidebar-border: var(--sand);
   --sidebar-ring: var(--bougie);
 }
@@ -159,7 +163,7 @@
   h2,
   h3,
   h4 {
-    @apply font-display tracking-tight;
+    @apply font-display tracking-tight text-heading;
   }
 }
 
@@ -168,7 +172,7 @@
     @apply mx-auto w-full max-w-[1320px] px-6 sm:px-8 lg:px-12;
   }
   .eyebrow {
-    @apply text-xs font-medium uppercase tracking-[0.22em] text-bougie;
+    @apply text-xs font-medium uppercase tracking-[0.22em] text-heading;
   }
   .text-balance-pretty {
     text-wrap: balance;
@@ -177,5 +181,5 @@
 
 ::selection {
   background-color: var(--blush);
-  color: var(--bougie);
+  color: var(--heading);
 }

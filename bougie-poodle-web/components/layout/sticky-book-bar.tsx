@@ -19,7 +19,7 @@ export function StickyBookBar() {
         </Button>
         <Button
           size="lg"
-          className="h-12 flex-1 rounded-full bg-bougie text-sm font-semibold text-cream hover:bg-bougie-bright"
+          className="h-12 flex-1 rounded-full bg-bougie text-sm font-semibold text-cream hover:bg-bougie/90"
           nativeButton={false}
           render={<Link href={CTA_LINK.href} />}
         >

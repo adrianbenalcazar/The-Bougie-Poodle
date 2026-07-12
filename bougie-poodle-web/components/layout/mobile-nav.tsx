@@ -37,7 +37,7 @@ export function MobileNav() {
         >
           <SheetTitle className="sr-only">Navigation menu</SheetTitle>
           <SheetHeader className="flex flex-row items-center justify-between border-b border-sand/70 px-6 py-5">
-            <LogoLockup wordmarkClassName="text-sm" badgeClassName="h-8 w-8" />
+            <LogoLockup imgClassName="h-8" />
             <SheetClose render={<Button variant="ghost" size="icon" aria-label="Close menu" />}>
               <X className="h-5 w-5" />
             </SheetClose>
@@ -72,7 +72,7 @@ export function MobileNav() {
               render={
                 <Button
                   size="lg"
-                  className="h-12 w-full rounded-full bg-bougie text-base font-semibold text-cream hover:bg-bougie-bright"
+                  className="h-12 w-full rounded-full bg-bougie text-base font-semibold text-cream hover:bg-bougie/90"
                   nativeButton={false}
                   render={<Link href={CTA_LINK.href} />}
                 />

@@ -81,7 +81,7 @@ export function AiChatWidget() {
             <button
               type="submit"
               aria-label="Send message"
-              className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-bougie text-cream transition-colors hover:bg-bougie-bright"
+              className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-bougie text-cream transition-colors hover:bg-bougie/90"
             >
               <Send className="h-4 w-4" />
             </button>

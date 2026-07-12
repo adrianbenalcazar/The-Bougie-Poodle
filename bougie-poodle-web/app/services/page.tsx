@@ -54,7 +54,7 @@ export default function ServicesPage() {
             </Button>
             <Button
               size="sm"
-              className="h-10 rounded-full bg-bougie px-4 text-xs font-semibold text-cream hover:bg-bougie-bright"
+              className="h-10 rounded-full bg-bougie px-4 text-xs font-semibold text-cream hover:bg-bougie/90"
               nativeButton={false}
               render={<Link href={CTA_LINK.href} />}
             >
@@ -72,7 +72,7 @@ export default function ServicesPage() {
               <p className="eyebrow mb-2">
                 {String(i + 1).padStart(2, "0")} / {SERVICE_CATEGORIES.length.toString().padStart(2, "0")}
               </p>
-              <h2 className="font-display text-3xl font-medium text-ink sm:text-4xl">{category}</h2>
+              <h2 className="font-display text-3xl font-medium sm:text-4xl">{category}</h2>
             </FadeIn>
             <div className="mt-10">
               <ServicesGrid services={items} />

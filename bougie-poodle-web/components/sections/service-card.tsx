@@ -15,7 +15,7 @@ export function ServiceCard({ service, delay = 0 }: { service: Service; delay?: 
       <div className="flex h-12 w-12 items-center justify-center rounded-full bg-blush text-bougie-bright transition-colors duration-300 group-hover:bg-bougie group-hover:text-cream">
         <Icon className="h-5 w-5" strokeWidth={1.6} />
       </div>
-      <h3 className="mt-5 font-display text-xl text-ink">{service.name}</h3>
+      <h3 className="mt-5 font-display text-xl">{service.name}</h3>
       <p className="mt-2.5 flex-1 text-sm leading-relaxed text-stone">{service.description}</p>
       <div className="mt-6 flex items-center justify-between border-t border-sand/60 pt-4 text-xs">
         <a href={BUSINESS.phoneHref} className="font-medium text-stone transition-colors hover:text-bougie">
@@ -23,7 +23,7 @@ export function ServiceCard({ service, delay = 0 }: { service: Service; delay?: 
         </a>
         <Link
           href={CTA_LINK.href}
-          className="flex items-center gap-1 font-semibold text-bougie transition-colors hover:text-bougie-bright"
+          className="flex items-center gap-1 font-semibold text-bougie transition-colors hover:text-heading"
         >
           Book now
           <ArrowUpRight className="h-3.5 w-3.5" />

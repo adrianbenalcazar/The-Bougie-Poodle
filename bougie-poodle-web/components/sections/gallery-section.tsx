@@ -15,7 +15,7 @@ export function GallerySection() {
         />
         <Link
           href="/gallery"
-          className="hidden shrink-0 items-center gap-2 font-semibold text-bougie transition-colors hover:text-bougie-bright sm:flex"
+          className="hidden shrink-0 items-center gap-2 font-semibold text-bougie transition-colors hover:text-heading sm:flex"
         >
           View full gallery
           <ArrowRight className="h-4 w-4" />

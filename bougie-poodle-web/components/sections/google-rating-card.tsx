@@ -20,7 +20,7 @@ export function GoogleRatingCard() {
       <p className="text-sm text-stone">Based on {BUSINESS.reviewCount}+ verified Google reviews</p>
       <a
         href="#"
-        className="text-sm font-semibold text-bougie transition-colors hover:text-bougie-bright"
+        className="text-sm font-semibold text-bougie transition-colors hover:text-heading"
       >
         Read all reviews on Google →
       </a>

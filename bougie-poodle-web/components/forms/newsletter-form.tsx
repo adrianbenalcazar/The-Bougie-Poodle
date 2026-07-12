@@ -50,7 +50,7 @@ export function NewsletterForm({ className, dark = false }: { className?: string
           type="submit"
           size="icon-lg"
           disabled={isSubmitting}
-          className="h-11 w-11 shrink-0 rounded-full bg-bougie text-cream hover:bg-bougie-bright"
+          className="h-11 w-11 shrink-0 rounded-full bg-bougie text-cream hover:bg-bougie/90"
           aria-label="Subscribe"
         >
           <ArrowRight className="h-4 w-4" />

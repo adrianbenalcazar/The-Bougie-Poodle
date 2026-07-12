@@ -1,10 +1,11 @@
+import Image from "next/image";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
 
 /**
- * Wordmark uses Bagel Fat One to match the client's real bubble-letter logotype.
- * The badge is still a placeholder paw glyph standing in for the illustrated
- * mascot — swap in the real logo files (public/logo/) once supplied.
+ * LogoBadge is a placeholder paw glyph standing in for the illustrated mascot
+ * icon (used standalone where only a small circular mark is needed, e.g.
+ * MascotMoment). LogoLockup renders the client's real logo file directly.
  */
 
 export function LogoBadge({ className }: { className?: string }) {
@@ -31,20 +32,23 @@ export function LogoBadge({ className }: { className?: string }) {
 
 export function LogoLockup({
   className,
-  badgeClassName = "h-9 w-9",
-  wordmarkClassName = "text-lg",
+  imgClassName = "h-10",
+  priority = false,
 }: {
   className?: string;
-  badgeClassName?: string;
-  wordmarkClassName?: string;
+  imgClassName?: string;
+  priority?: boolean;
 }) {
   return (
-    <Link href="/" className={cn("group flex items-center gap-2.5", className)} aria-label="The Bougie Poodle — home">
-      <LogoBadge className={badgeClassName} />
-      <span className={cn("font-wordmark leading-none text-bougie-bright", wordmarkClassName)}>
-        <span className="block text-[0.42em] tracking-[0.2em]">THE</span>
-        <span className="block">BOUGIE POODLE</span>
-      </span>
+    <Link href="/" className={cn("group flex shrink-0 items-center", className)} aria-label="The Bougie Poodle — home">
+      <Image
+        src="/images/logo.png"
+        alt="The Bougie Poodle"
+        width={1663}
+        height={901}
+        priority={priority}
+        className={cn("w-auto object-contain", imgClassName)}
+      />
     </Link>
   );
 }

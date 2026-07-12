@@ -6,7 +6,7 @@ export function organizationJsonLd() {
     "@type": "Organization",
     name: BUSINESS.name,
     url: SITE_URL,
-    logo: `${SITE_URL}/icon.svg`,
+    logo: `${SITE_URL}/images/logo.png`,
     sameAs: [BUSINESS.social.instagram, BUSINESS.social.facebook, BUSINESS.social.tiktok],
   };
 }
@@ -16,7 +16,7 @@ export function localBusinessJsonLd() {
     "@context": "https://schema.org",
     "@type": "PetGroomer",
     name: BUSINESS.name,
-    image: `${SITE_URL}/icon.svg`,
+    image: `${SITE_URL}/images/logo.png`,
     url: SITE_URL,
     telephone: BUSINESS.phone,
     email: BUSINESS.email,

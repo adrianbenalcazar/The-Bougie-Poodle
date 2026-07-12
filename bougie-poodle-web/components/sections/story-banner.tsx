@@ -33,7 +33,7 @@ export function StoryBanner({
         </FadeIn>
         <FadeIn delay={0.1}>
           <p className="eyebrow mb-3">{eyebrow}</p>
-          <h2 className="text-balance-pretty font-display text-3xl font-medium text-ink sm:text-4xl">{title}</h2>
+          <h2 className="text-balance-pretty font-display text-3xl font-medium sm:text-4xl">{title}</h2>
           <div className="mt-5 space-y-4">
             {paragraphs.map((p, i) => (
               <p key={i} className="text-base leading-relaxed text-stone">
@@ -44,7 +44,7 @@ export function StoryBanner({
           {cta && (
             <Link
               href={cta.href}
-              className="mt-7 inline-flex items-center gap-2 font-semibold text-bougie transition-colors hover:text-bougie-bright"
+              className="mt-7 inline-flex items-center gap-2 font-semibold text-bougie transition-colors hover:text-heading"
             >
               {cta.label}
               <ArrowRight className="h-4 w-4" />

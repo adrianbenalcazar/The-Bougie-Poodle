@@ -32,7 +32,7 @@ export default function ContactPage() {
         <div className="grid grid-cols-1 gap-16 lg:grid-cols-[1fr_1.1fr]">
           <FadeIn>
             <p className="eyebrow mb-3">Send a Message</p>
-            <h2 className="font-display text-3xl font-medium text-ink sm:text-4xl">We&apos;d love to hear from you.</h2>
+            <h2 className="font-display text-3xl font-medium sm:text-4xl">We&apos;d love to hear from you.</h2>
             <p className="mt-4 max-w-md text-base leading-relaxed text-stone">
               Whether you have a question about services, want to discuss your pet&apos;s specific needs, or are ready
               to book — we typically respond within one business day.

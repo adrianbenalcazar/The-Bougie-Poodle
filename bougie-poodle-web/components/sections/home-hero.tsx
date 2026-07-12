@@ -50,7 +50,7 @@ export function HomeHero() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.9, delay: 0.42, ease: [0.22, 1, 0.36, 1] }}
-          className="max-w-3xl text-balance-pretty font-display text-5xl font-medium leading-[1.05] sm:text-6xl lg:text-7xl"
+          className="max-w-3xl text-balance-pretty font-display text-5xl font-medium leading-[1.05] text-cream sm:text-6xl lg:text-7xl"
         >
           Grooming, elevated to a{" "}
           <span className="italic text-bougie-bright">love language.</span>
@@ -74,7 +74,7 @@ export function HomeHero() {
         >
           <Button
             size="lg"
-            className="h-14 gap-2 rounded-full bg-bougie px-8 text-base font-semibold text-cream hover:bg-bougie-bright"
+            className="h-14 gap-2 rounded-full bg-bougie px-8 text-base font-semibold text-cream hover:bg-bougie/90"
             nativeButton={false}
             render={<Link href={CTA_LINK.href} />}
           >

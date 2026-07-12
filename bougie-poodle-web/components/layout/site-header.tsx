@@ -30,8 +30,8 @@ export function SiteHeader() {
           : "border-transparent bg-cream/40 backdrop-blur-sm",
       )}
     >
-      <div className="container-luxury flex h-20 items-center justify-between">
-        <LogoLockup badgeClassName="h-9 w-9" wordmarkClassName="text-[15px]" />
+      <div className="container-luxury flex items-center justify-between py-3">
+        <LogoLockup imgClassName="h-[68px]" priority />
 
         <nav className="hidden items-center gap-8 lg:flex" aria-label="Primary">
           {NAV_LINKS.map((link) => {
@@ -61,7 +61,7 @@ export function SiteHeader() {
           </a>
           <Button
             size="lg"
-            className="h-10 rounded-full bg-bougie px-6 text-sm font-semibold text-cream hover:bg-bougie-bright"
+            className="h-10 rounded-full bg-bougie px-6 text-sm font-semibold text-cream hover:bg-bougie/90"
             nativeButton={false}
             render={<Link href={CTA_LINK.href} />}
           >
