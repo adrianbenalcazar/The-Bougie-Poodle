@@ -47,194 +47,55 @@ export const NAV_LINKS = [
 
 export const CTA_LINK = { label: "Request Service", href: "/request-service" } as const;
 
-export type ServiceCategory =
-  | "Bath & Spa Essentials"
-  | "Cuts & Styling"
-  | "Coat & Skin Treatments"
-  | "Wellness Essentials"
-  | "Finishing Touches";
+export const SERVICE_SIZES = ["Small", "Medium", "Large", "XL"] as const;
+export type ServiceSize = (typeof SERVICE_SIZES)[number];
 
-export type Service = {
+export type ServiceTier = {
   slug: string;
   name: string;
-  category: ServiceCategory;
   description: string;
+  includes: string[];
   icon: string;
 };
 
-export const SERVICE_CATEGORIES: ServiceCategory[] = [
-  "Bath & Spa Essentials",
-  "Cuts & Styling",
-  "Coat & Skin Treatments",
-  "Wellness Essentials",
-  "Finishing Touches",
-];
-
-export const SERVICES: Service[] = [
+export const SERVICE_TIERS: ServiceTier[] = [
   {
-    slug: "full-bath",
-    name: "Full Bath",
-    category: "Bath & Spa Essentials",
-    description: "A slow, thorough wash with warm water and hand-selected products suited to your pet's coat and skin.",
-    icon: "Droplets",
-  },
-  {
-    slug: "blow-dry-brushing",
-    name: "Blow Dry & Brushing",
-    category: "Bath & Spa Essentials",
-    description: "Gentle, low-noise drying and a full brush-out for a coat that's soft, smooth, and mat-free.",
-    icon: "Wind",
-  },
-  {
-    slug: "organic-shampoos",
-    name: "Organic Shampoos",
-    category: "Bath & Spa Essentials",
-    description: "Botanical, sulfate-free formulas chosen for sensitive skin, allergies, and coats that deserve better.",
-    icon: "Leaf",
-  },
-  {
-    slug: "paw-spa",
-    name: "Paw Spa",
-    category: "Bath & Spa Essentials",
-    description: "A soothing soak, balm, and pad massage that leaves paws soft and city-walk ready.",
-    icon: "PawPrint",
-  },
-  {
-    slug: "hydrating-coat-treatments",
-    name: "Hydrating Coat Treatments",
-    category: "Bath & Spa Essentials",
-    description: "Deep-conditioning masks that restore moisture and shine to dry or over-groomed coats.",
+    slug: "the-bougie-groom",
+    name: "The Bougie Groom",
+    description: "Our signature full-service groom — a spa day, not just a bath.",
+    includes: [
+      "Bath with premium shampoo & conditioner",
+      "Blow dry",
+      "Nail clipping & filing",
+      "Ear cleaning",
+      "Teeth brushing (upon request only)",
+      "Perfume",
+      "Bandana",
+      "Regular haircut",
+    ],
     icon: "Sparkles",
   },
   {
-    slug: "beauty-masks",
-    name: "Beauty Masks",
-    category: "Bath & Spa Essentials",
-    description: "A spa-grade finishing treatment for coat texture and a visible, camera-ready glow.",
-    icon: "Flower2",
-  },
-  {
-    slug: "breed-specific-haircuts",
-    name: "Breed-Specific Haircuts",
-    category: "Cuts & Styling",
-    description: "Precision styling to breed standard, tailored by a groomer fluent in every coat type.",
+    slug: "the-bougie-groom-breed-specific",
+    name: "The Bougie Groom — Breed-Specific Cut",
+    description: "Everything in The Bougie Groom, finished with a precision breed-standard haircut.",
+    includes: ["Everything in The Bougie Groom", "Breed-specific haircut"],
     icon: "Scissors",
-  },
-  {
-    slug: "custom-haircuts",
-    name: "Custom Haircuts",
-    category: "Cuts & Styling",
-    description: "A one-on-one styling consultation for a look that's entirely, unmistakably your pet's own.",
-    icon: "WandSparkles",
-  },
-  {
-    slug: "coat-shaping",
-    name: "Coat Shaping",
-    category: "Cuts & Styling",
-    description: "Fine detail work around the face, feet, and silhouette for a polished, tailored finish.",
-    icon: "Layers",
-  },
-  {
-    slug: "hygienic-trimming",
-    name: "Hygienic Trimming",
-    category: "Cuts & Styling",
-    description: "Sanitary trims kept short and clean for comfort, cleanliness, and everyday ease.",
-    icon: "Scissors",
-  },
-  {
-    slug: "deshedding-treatments",
-    name: "Deshedding Treatments",
-    category: "Coat & Skin Treatments",
-    description: "A specialized process that lifts loose undercoat at the source, for a lasting reduction in shedding.",
-    icon: "Wind",
-  },
-  {
-    slug: "dematting",
-    name: "Dematting",
-    category: "Coat & Skin Treatments",
-    description: "Careful, low-stress mat removal that prioritizes your pet's comfort at every step.",
-    icon: "Layers",
-  },
-  {
-    slug: "flea-tick-treatments",
-    name: "Flea & Tick Treatments",
-    category: "Coat & Skin Treatments",
-    description: "Gentle, effective treatments that protect without harsh chemicals.",
-    icon: "ShieldCheck",
-  },
-  {
-    slug: "tear-stain-removal",
-    name: "Tear Stain Removal",
-    category: "Coat & Skin Treatments",
-    description: "A delicate facial treatment that brightens and softens the fur beneath the eyes.",
-    icon: "Eye",
-  },
-  {
-    slug: "facial-treatments",
-    name: "Facial Treatments",
-    category: "Coat & Skin Treatments",
-    description: "A cleansing, brightening ritual for the face — because first impressions matter.",
-    icon: "Sparkle",
-  },
-  {
-    slug: "nail-trimming-filing",
-    name: "Nail Trimming & Filing",
-    category: "Wellness Essentials",
-    description: "Precise trimming and a smooth file finish, handled with a steady, reassuring touch.",
-    icon: "Sparkles",
-  },
-  {
-    slug: "ear-cleaning",
-    name: "Ear Cleaning",
-    category: "Wellness Essentials",
-    description: "Thorough, gentle ear care to support comfort and long-term hygiene.",
-    icon: "Ear",
-  },
-  {
-    slug: "teeth-brushing",
-    name: "Teeth Brushing",
-    category: "Wellness Essentials",
-    description: "A simple habit for fresher breath and healthier gums, folded into every visit.",
-    icon: "Smile",
-  },
-  {
-    slug: "luxury-finishing-touches",
-    name: "Luxury Finishing Touches",
-    category: "Finishing Touches",
-    description: "The final layer of polish — coat gloss, styling balm, and a groomer's eye for detail.",
-    icon: "Gem",
-  },
-  {
-    slug: "premium-perfumes",
-    name: "Premium Perfumes",
-    category: "Finishing Touches",
-    description: "A light, pet-safe fragrance to send your companion home smelling as good as they look.",
-    icon: "FlaskConical",
-  },
-  {
-    slug: "bows",
-    name: "Bows",
-    category: "Finishing Touches",
-    description: "Hand-tied bows in seasonal colors, the signature last touch of a Bougie Poodle visit.",
-    icon: "Ribbon",
-  },
-  {
-    slug: "bandanas",
-    name: "Bandanas",
-    category: "Finishing Touches",
-    description: "Soft, tailored bandanas selected to complement your pet's finished style.",
-    icon: "Shirt",
-  },
-  {
-    slug: "safe-creative-coloring",
-    name: "Safe Creative Coloring",
-    category: "Finishing Touches",
-    description: "Pet-safe, vet-approved color accents for owners who want a little more fun in the finish.",
-    icon: "Palette",
   },
 ];
 
-export const SPECIES = ["Dogs", "Cats"] as const;
+export type AddOn = {
+  slug: string;
+  name: string;
+  icon: string;
+};
+
+export const ADD_ONS: AddOn[] = [
+  { slug: "anal-glands", name: "Anal Glands", icon: "Stethoscope" },
+  { slug: "dematting", name: "Dematting", icon: "Layers" },
+  { slug: "deskunking", name: "Deskunking", icon: "SprayCan" },
+  { slug: "coloring", name: "Coloring", icon: "Palette" },
+];
 
 export type Testimonial = {
   name: string;

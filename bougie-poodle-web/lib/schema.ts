@@ -1,4 +1,4 @@
-import { BUSINESS, FAQS, SERVICES, SITE_URL } from "@/lib/constants";
+import { BUSINESS, FAQS, SERVICE_TIERS, SITE_URL } from "@/lib/constants";
 
 export function organizationJsonLd() {
   return {
@@ -94,12 +94,12 @@ export function servicesJsonLd() {
     hasOfferCatalog: {
       "@type": "OfferCatalog",
       name: "Grooming Services",
-      itemListElement: SERVICES.map((service) => ({
+      itemListElement: SERVICE_TIERS.map((tier) => ({
         "@type": "Offer",
         itemOffered: {
           "@type": "Service",
-          name: service.name,
-          description: service.description,
+          name: tier.name,
+          description: tier.description,
         },
       })),
     },

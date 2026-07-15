@@ -3,7 +3,7 @@ import { HERO_IMAGES } from "@/lib/images";
 import { breadcrumbJsonLd } from "@/lib/schema";
 import { JsonLd } from "@/components/seo/json-ld";
 import { PageHero } from "@/components/sections/page-hero";
-import { BookingTabs } from "@/components/sections/booking-tabs";
+import { BookingFlow } from "@/components/sections/booking-flow";
 import { TrustBar } from "@/components/sections/trust-bar";
 
 export const metadata: Metadata = {
@@ -26,8 +26,8 @@ export default function RequestServicePage() {
       />
 
       <section className="container-luxury py-24 sm:py-28">
-        <div className="mx-auto max-w-2xl rounded-3xl border border-sand/70 bg-white p-8 sm:p-10">
-          <BookingTabs />
+        <div className="mx-auto max-w-3xl rounded-3xl border border-sand/70 bg-white p-8 sm:p-10">
+          <BookingFlow />
         </div>
       </section>
 

@@ -34,18 +34,24 @@ export function LogoLockup({
   className,
   imgClassName = "h-10",
   priority = false,
+  src = "/images/logo.png",
+  width = 1663,
+  height = 901,
 }: {
   className?: string;
   imgClassName?: string;
   priority?: boolean;
+  src?: string;
+  width?: number;
+  height?: number;
 }) {
   return (
     <Link href="/" className={cn("group flex shrink-0 items-center", className)} aria-label="The Bougie Poodle — home">
       <Image
-        src="/images/logo.png"
+        src={src}
         alt="The Bougie Poodle"
-        width={1663}
-        height={901}
+        width={width}
+        height={height}
         priority={priority}
         className={cn("w-auto object-contain", imgClassName)}
       />

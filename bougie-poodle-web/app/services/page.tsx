@@ -1,21 +1,21 @@
 import type { Metadata } from "next";
 import { Phone, Sparkles } from "lucide-react";
-import { BUSINESS, CTA_LINK, SERVICES, SERVICE_CATEGORIES } from "@/lib/constants";
+import { BUSINESS, CTA_LINK, SERVICE_TIERS } from "@/lib/constants";
 import { HERO_IMAGES } from "@/lib/images";
 import { breadcrumbJsonLd, servicesJsonLd } from "@/lib/schema";
 import { JsonLd } from "@/components/seo/json-ld";
 import { PageHero } from "@/components/sections/page-hero";
-import { ServicesGrid } from "@/components/sections/services-grid";
+import { ServiceTierCard } from "@/components/sections/service-tier-card";
+import { AddonsGrid } from "@/components/sections/addons-grid";
 import { SectionHeading } from "@/components/sections/section-heading";
 import { CtaBand } from "@/components/sections/cta-band";
-import { FadeIn } from "@/components/motion/fade-in";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Grooming Services — Dogs & Cats",
+  title: "Grooming Services — The Bougie Groom",
   description:
-    "Explore all 23 luxury grooming services at The Bougie Poodle: breed-specific haircuts, organic spa treatments, deshedding, dematting, and premium finishing touches for dogs and cats.",
+    "The Bougie Groom at The Bougie Poodle: a full-service bath, blow dry, and haircut, with an optional breed-specific cut and add-ons like dematting and deskunking. Call for a personalized quote.",
   alternates: { canonical: "/services" },
 };
 
@@ -26,8 +26,8 @@ export default function ServicesPage() {
       <JsonLd data={servicesJsonLd()} />
       <PageHero
         eyebrow="Full Menu"
-        title="23 ways to spoil them."
-        subtitle="Every service, performed with organic products, breed expertise, and zero rushing. Mix and match to build your pet's perfect visit."
+        title="One groom. Zero compromises."
+        subtitle="The Bougie Groom, tailored to your dog's size and coat — with an optional breed-specific finish and add-ons for whatever they need most."
         image={HERO_IMAGES.services}
         breadcrumb="Services"
       />
@@ -54,7 +54,7 @@ export default function ServicesPage() {
             </Button>
             <Button
               size="sm"
-              className="h-10 rounded-full bg-bougie px-4 text-xs font-semibold text-cream hover:bg-bougie/90"
+              className="h-10 rounded-full bg-bougie px-4 text-xs font-semibold text-white hover:bg-bougie/90"
               nativeButton={false}
               render={<Link href={CTA_LINK.href} />}
             >
@@ -64,28 +64,33 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      {SERVICE_CATEGORIES.map((category, i) => {
-        const items = SERVICES.filter((s) => s.category === category);
-        return (
-          <section key={category} className={`container-luxury py-16 sm:py-20 ${i === 0 ? "pt-20 sm:pt-24" : ""}`}>
-            <FadeIn>
-              <p className="eyebrow mb-2">
-                {String(i + 1).padStart(2, "0")} / {SERVICE_CATEGORIES.length.toString().padStart(2, "0")}
-              </p>
-              <h2 className="font-display text-3xl font-medium sm:text-4xl">{category}</h2>
-            </FadeIn>
-            <div className="mt-10">
-              <ServicesGrid services={items} />
-            </div>
-          </section>
-        );
-      })}
+      <section className="container-luxury py-20 sm:py-24">
+        <SectionHeading
+          eyebrow="The Bougie Groom"
+          title="Priced by size, never by guesswork."
+          subtitle="Every groom is quoted for your dog's size — Small, Medium, Large, or XL — so you always know what to expect before you book."
+        />
+        <div className="mt-12 grid grid-cols-1 gap-8 lg:grid-cols-2">
+          {SERVICE_TIERS.map((tier, i) => (
+            <ServiceTierCard key={tier.slug} tier={tier} delay={i * 0.1} />
+          ))}
+        </div>
+      </section>
 
-      <section className="container-luxury pb-24">
+      <section className="bg-blush/30 py-20 sm:py-24">
+        <div className="container-luxury">
+          <SectionHeading eyebrow="Add-Ons" title="A little extra, whenever they need it." align="center" className="mx-auto" />
+          <div className="mt-12">
+            <AddonsGrid />
+          </div>
+        </div>
+      </section>
+
+      <section className="container-luxury py-20 sm:py-24">
         <SectionHeading
           eyebrow="Every Visit"
-          title="Dogs. Cats. Every coat, every size."
-          subtitle="From Persian cats to double-coated Newfoundlands, our team is trained to handle every breed and temperament with equal patience."
+          title="Every breed. Every coat. Every size."
+          subtitle="From tiny toy breeds to double-coated giants, our team is trained to handle every dog with equal patience."
           align="center"
           className="mx-auto"
         />

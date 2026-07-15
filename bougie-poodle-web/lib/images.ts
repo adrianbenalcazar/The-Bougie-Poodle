@@ -15,8 +15,8 @@ function unsplash(id: string) {
 
 export const HERO_IMAGES = {
   home: {
-    src: unsplash("1780606768590-72370372ad78"),
-    alt: "A pristine white poodle poses elegantly on a piano bench, embodying refined, luxury pet styling",
+    src: "/images/gallery/16.PNG",
+    alt: "A Shiba Inu in a pink shower cap having its teeth brushed with a pink toothbrush against a bubblegum-pink backdrop",
   },
   services: {
     src: unsplash("1727510190155-51abda425a82"),

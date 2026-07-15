@@ -1,12 +1,12 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
-import { SERVICES } from "@/lib/constants";
+import { SERVICE_TIERS } from "@/lib/constants";
 import { STORY_IMAGES } from "@/lib/images";
 import { HomeHero } from "@/components/sections/home-hero";
 import { TrustBar } from "@/components/sections/trust-bar";
 import { SectionHeading } from "@/components/sections/section-heading";
-import { ServicesGrid } from "@/components/sections/services-grid";
+import { ServiceTierCard } from "@/components/sections/service-tier-card";
 import { StoryBanner } from "@/components/sections/story-banner";
 import { GallerySection } from "@/components/sections/gallery-section";
 import { TestimonialsCarousel } from "@/components/sections/testimonials-carousel";
@@ -22,18 +22,7 @@ export const metadata: Metadata = {
   alternates: { canonical: "/" },
 };
 
-const FEATURED_SLUGS = [
-  "full-bath",
-  "breed-specific-haircuts",
-  "deshedding-treatments",
-  "nail-trimming-filing",
-  "paw-spa",
-  "luxury-finishing-touches",
-];
-
 export default function HomePage() {
-  const featured = SERVICES.filter((s) => FEATURED_SLUGS.includes(s.slug));
-
   return (
     <>
       <HomeHero />
@@ -42,23 +31,25 @@ export default function HomePage() {
       <section className="container-luxury py-24 sm:py-28">
         <div className="flex flex-col items-start justify-between gap-6 sm:flex-row sm:items-end">
           <SectionHeading
-            eyebrow="Signature Services"
+            eyebrow="The Bougie Groom"
             title="Every detail, considered."
-            subtitle="From the first bath to the final bow, each service is performed with the patience and precision your pet deserves."
+            subtitle="One signature groom, tailored to your dog's size — with an optional breed-specific finish and add-ons for whatever they need most."
           />
           <Link
             href="/services"
             className="hidden shrink-0 items-center gap-2 font-semibold text-bougie transition-colors hover:text-heading sm:flex"
           >
-            View all 23 services
+            View full menu
             <ArrowRight className="h-4 w-4" />
           </Link>
         </div>
-        <div className="mt-12">
-          <ServicesGrid services={featured} />
+        <div className="mt-12 grid grid-cols-1 gap-8 lg:grid-cols-2">
+          {SERVICE_TIERS.map((tier, i) => (
+            <ServiceTierCard key={tier.slug} tier={tier} delay={i * 0.1} />
+          ))}
         </div>
         <Link href="/services" className="mt-8 flex items-center gap-2 font-semibold text-bougie sm:hidden">
-          View all 23 services
+          View full menu
           <ArrowRight className="h-4 w-4" />
         </Link>
       </section>

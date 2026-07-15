@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { Mail, MapPin, Phone } from "lucide-react";
-import { BUSINESS, NAV_LINKS, SERVICE_CATEGORIES } from "@/lib/constants";
+import { BUSINESS, NAV_LINKS, SERVICE_TIERS } from "@/lib/constants";
 import { LogoLockup } from "@/components/brand/logo-mark";
 import { NewsletterForm } from "@/components/forms/newsletter-form";
 import { InstagramIcon, FacebookIcon, TikTokIcon } from "@/components/icons/social-icons";
@@ -10,7 +10,7 @@ export function SiteFooter() {
     <footer className="border-t border-sand/50 bg-blush text-ink">
       <div className="container-luxury grid grid-cols-1 gap-12 py-16 sm:grid-cols-2 lg:grid-cols-[1.3fr_0.8fr_1fr_1.1fr] lg:gap-8">
         <div className="space-y-5">
-          <LogoLockup imgClassName="h-11" />
+          <LogoLockup imgClassName="h-[62px]" src="/images/logos/large-logo.png" width={3673} height={901} />
           <p className="max-w-xs text-sm leading-relaxed text-ink/70">
             Westchester County&apos;s most bougie dog and cat grooming studio — breed-specific styling,
             organic spa treatments, and white-glove care for pets who deserve the best.
@@ -49,13 +49,18 @@ export function SiteFooter() {
         <div>
           <h3 className="text-xs font-medium uppercase tracking-[0.22em] text-stone">Services</h3>
           <ul className="mt-4 space-y-3">
-            {SERVICE_CATEGORIES.map((category) => (
-              <li key={category}>
+            {SERVICE_TIERS.map((tier) => (
+              <li key={tier.slug}>
                 <Link href="/services" className="text-sm text-ink/75 transition-colors hover:text-ink">
-                  {category}
+                  {tier.name}
                 </Link>
               </li>
             ))}
+            <li>
+              <Link href="/services" className="text-sm text-ink/75 transition-colors hover:text-ink">
+                Add-Ons
+              </Link>
+            </li>
           </ul>
         </div>
 
