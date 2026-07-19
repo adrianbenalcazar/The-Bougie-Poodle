@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Bagel_Fat_One, Fraunces, Inter } from "next/font/google";
 import "./globals.css";
 import { SITE_URL, BUSINESS } from "@/lib/constants";
+import { HERO_IMAGES } from "@/lib/images";
 import { organizationJsonLd, localBusinessJsonLd } from "@/lib/schema";
 import { JsonLd } from "@/components/seo/json-ld";
 import { SiteHeader } from "@/components/layout/site-header";
@@ -56,12 +57,21 @@ export const metadata: Metadata = {
     title: `${BUSINESS.name} | Luxury Dog & Cat Grooming in Westchester, NY`,
     description:
       "Breed-specific styling, organic spa treatments, and white-glove grooming for dogs and cats in Westchester County.",
+    images: [
+      {
+        url: "/images/gallery/16.PNG",
+        width: 1672,
+        height: 941,
+        alt: HERO_IMAGES.home.alt,
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: `${BUSINESS.name} | Luxury Dog & Cat Grooming`,
     description:
       "Westchester County's most bougie dog and cat grooming studio. Call for a personalized quote.",
+    images: ["/images/gallery/16.PNG"],
   },
   robots: {
     index: true,
@@ -79,9 +89,11 @@ export default function RootLayout({
       lang="en"
       className={`${fraunces.variable} ${inter.variable} ${bagelFatOne.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col bg-cream text-ink">
+      <head>
         <JsonLd data={organizationJsonLd()} />
         <JsonLd data={localBusinessJsonLd()} />
+      </head>
+      <body className="min-h-full flex flex-col bg-cream text-ink">
         <a
           href="#main-content"
           className="sr-only focus:not-sr-only focus:absolute focus:z-[100] focus:m-3 focus:rounded-md focus:bg-ink focus:px-4 focus:py-2 focus:text-cream"

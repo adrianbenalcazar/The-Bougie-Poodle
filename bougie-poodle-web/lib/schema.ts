@@ -14,7 +14,11 @@ export function organizationJsonLd() {
 export function localBusinessJsonLd() {
   return {
     "@context": "https://schema.org",
-    "@type": "PetGroomer",
+    // schema.org has no "PetGroomer" or "PetGroomingSalon" type — "LocalBusiness" is the
+    // correct type. No aggregateRating: Google no longer shows review-snippet rich results
+    // for self-served LocalBusiness ratings.
+    "@type": "LocalBusiness",
+    "@id": `${SITE_URL}/#localbusiness`,
     name: BUSINESS.name,
     image: `${SITE_URL}/images/logo.png`,
     url: SITE_URL,
@@ -45,11 +49,6 @@ export function localBusinessJsonLd() {
       closes: h.closes,
     })),
     sameAs: [BUSINESS.social.instagram, BUSINESS.social.facebook, BUSINESS.social.tiktok],
-    aggregateRating: {
-      "@type": "AggregateRating",
-      ratingValue: BUSINESS.ratingValue,
-      reviewCount: BUSINESS.reviewCount,
-    },
   };
 }
 
@@ -87,7 +86,8 @@ export function servicesJsonLd() {
     "@type": "Service",
     serviceType: "Pet Grooming",
     provider: {
-      "@type": "PetGroomer",
+      "@type": "LocalBusiness",
+      "@id": `${SITE_URL}/#localbusiness`,
       name: BUSINESS.name,
     },
     areaServed: "Westchester County, NY",
@@ -111,13 +111,9 @@ export function reviewsJsonLd(
 ) {
   return {
     "@context": "https://schema.org",
-    "@type": "PetGroomer",
+    "@type": "LocalBusiness",
+    "@id": `${SITE_URL}/#localbusiness`,
     name: BUSINESS.name,
-    aggregateRating: {
-      "@type": "AggregateRating",
-      ratingValue: BUSINESS.ratingValue,
-      reviewCount: BUSINESS.reviewCount,
-    },
     review: reviews.map((r) => ({
       "@type": "Review",
       author: { "@type": "Person", name: r.name },

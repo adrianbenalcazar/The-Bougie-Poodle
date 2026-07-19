@@ -4,7 +4,7 @@ import { FadeInStagger, FadeIn } from "@/components/motion/fade-in";
 
 const ITEMS = [
   { icon: Star, label: `${BUSINESS.ratingValue}-Star Rated`, sub: `${BUSINESS.reviewCount}+ reviews` },
-  { icon: Award, label: `Est. ${BUSINESS.founded}`, sub: "Westchester-trusted" },
+  { icon: Award, label: "Local Favorite", sub: "Westchester, NY" },
   { icon: ShieldCheck, label: "Certified Groomers", sub: "Dogs & cats" },
   { icon: Leaf, label: "Organic Products", sub: "Sensitive-skin safe" },
 ];

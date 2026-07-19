@@ -11,6 +11,8 @@ import { StoryBanner } from "@/components/sections/story-banner";
 import { GallerySection } from "@/components/sections/gallery-section";
 import { TestimonialsCarousel } from "@/components/sections/testimonials-carousel";
 import { LocationHours } from "@/components/sections/location-hours";
+import { FollowAlong } from "@/components/sections/follow-along";
+import { MeetTheTeam } from "@/components/sections/meet-the-team";
 import { NewsletterSignup } from "@/components/sections/newsletter-signup";
 import { FaqAccordion } from "@/components/sections/faq-accordion";
 import { CtaBand } from "@/components/sections/cta-band";
@@ -54,6 +56,8 @@ export default function HomePage() {
         </Link>
       </section>
 
+      <MeetTheTeam />
+
       <StoryBanner
         eyebrow="Why Bougie"
         title="Because your pet isn't 'just a pet.'"
@@ -83,6 +87,7 @@ export default function HomePage() {
       </section>
 
       <LocationHours />
+      <FollowAlong />
       <NewsletterSignup />
       <FaqAccordion />
       <CtaBand />

@@ -3,6 +3,11 @@ import { BUSINESS } from "@/lib/constants";
 import { FadeIn } from "@/components/motion/fade-in";
 import { SectionHeading } from "@/components/sections/section-heading";
 
+const MAP_QUERY = encodeURIComponent(
+  `${BUSINESS.address.line1}, ${BUSINESS.address.city}, ${BUSINESS.address.state} ${BUSINESS.address.zip}`
+);
+const MAP_EMBED_SRC = `https://www.google.com/maps?q=${MAP_QUERY}&output=embed`;
+
 export function LocationHours() {
   return (
     <section className="container-luxury py-24 sm:py-28">
@@ -45,13 +50,14 @@ export function LocationHours() {
         </div>
 
         <FadeIn delay={0.1} className="relative min-h-[320px] overflow-hidden rounded-3xl border border-sand/70 bg-blush/40">
-          <div className="absolute inset-0 flex flex-col items-center justify-center gap-3 text-center">
-            <MapPin className="h-8 w-8 text-bougie" strokeWidth={1.4} />
-            <p className="font-display text-lg text-ink">{BUSINESS.address.county}</p>
-            <p className="max-w-xs text-sm text-stone">
-              Interactive map coming soon — call or email and we&apos;ll send door-to-door directions.
-            </p>
-          </div>
+          <iframe
+            src={MAP_EMBED_SRC}
+            title={`Map to ${BUSINESS.name}`}
+            className="absolute inset-0 h-full w-full grayscale-[15%]"
+            style={{ border: 0 }}
+            loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"
+          />
         </FadeIn>
       </div>
     </section>

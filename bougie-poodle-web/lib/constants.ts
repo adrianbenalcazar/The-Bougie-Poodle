@@ -18,13 +18,11 @@ export const BUSINESS = {
     longitude: -73.9204,
   },
   hours: [
-    { days: "Tuesday – Friday", time: "9:00 AM – 6:00 PM" },
-    { days: "Saturday", time: "9:00 AM – 4:00 PM" },
-    { days: "Sunday – Monday", time: "By appointment only" },
+    { days: "Tuesday – Saturday", time: "8:00 AM – 4:00 PM" },
+    { days: "Sunday – Monday", time: "Closed" },
   ],
   hoursSchema: [
-    { day: ["Tuesday", "Wednesday", "Thursday", "Friday"], opens: "09:00", closes: "18:00" },
-    { day: ["Saturday"], opens: "09:00", closes: "16:00" },
+    { day: ["Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"], opens: "08:00", closes: "16:00" },
   ],
   social: {
     instagram: "https://www.instagram.com/thebougiepoodle",

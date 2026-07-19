@@ -10,12 +10,12 @@ import { Button } from "@/components/ui/button";
 
 export function HomeHero() {
   return (
-    <section className="relative flex min-h-[92vh] items-end overflow-hidden bg-ink text-cream">
+    <section className="relative flex min-h-[92vh] items-end overflow-hidden bg-[#f9e8e8] text-cream">
       <motion.div
         initial={{ scale: 1.08, opacity: 0.6 }}
         animate={{ scale: 1, opacity: 1 }}
         transition={{ duration: 1.6, ease: [0.22, 1, 0.36, 1] }}
-        className="absolute inset-0"
+        className="absolute inset-0 bg-[#f9e8e8]"
       >
         <Image
           src={HERO_IMAGES.home.src}
@@ -23,6 +23,8 @@ export function HomeHero() {
           fill
           priority
           sizes="100vw"
+          placeholder="blur"
+          blurDataURL={HERO_IMAGES.home.blurDataURL}
           className="object-cover"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/55 to-ink/10" />
