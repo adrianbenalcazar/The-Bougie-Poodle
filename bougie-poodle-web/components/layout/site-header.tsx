@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Phone } from "lucide-react";
+import { Phone, Sparkles } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { BUSINESS, CTA_LINK, NAV_LINKS } from "@/lib/constants";
 import { LogoLockup } from "@/components/brand/logo-mark";
@@ -59,6 +59,13 @@ export function SiteHeader() {
             <Phone className="h-4 w-4" strokeWidth={1.75} />
             {BUSINESS.phone}
           </a>
+          <Link
+            href="/waitlist"
+            className="flex items-center gap-1.5 rounded-full border border-[#c9a227]/50 bg-[#f2dfa8]/30 px-4 py-2 text-sm font-semibold text-[#8a6d10] transition-colors hover:bg-[#f2dfa8]/50"
+          >
+            <Sparkles className="h-3.5 w-3.5" />
+            Join the Waitlist
+          </Link>
           <Button
             size="lg"
             className="h-10 rounded-full bg-bougie px-6 text-sm font-semibold text-cream hover:bg-bougie/90"

@@ -26,13 +26,25 @@ export const BUSINESS = {
   ],
   social: {
     instagram: "https://www.instagram.com/thebougiepoodle",
-    facebook: "https://www.facebook.com/thebougiepoodle",
+    facebook: "https://www.facebook.com/profile.php?id=61592066188014",
     tiktok: "https://www.tiktok.com/@thebougiepoodle",
   },
   founded: 2026,
   ratingValue: "5.0",
   reviewCount: "214",
 } as const;
+
+/**
+ * 1. Create a free form at https://formspree.io (see WAITLIST section of
+ *    the README/chat for the full setup steps) and copy the ID from the
+ *    endpoint Formspree gives you — it looks like https://formspree.io/f/abcdwxyz.
+ * 2. Paste just the ID (the "abcdwxyz" part) below, replacing "YOUR_FORM_ID".
+ * 3. Change WAITLIST_ADMIN_PASSWORD to a password only you know.
+ *    Note: this is a simple front-end check, not real security — good enough
+ *    to keep casual visitors out, not for protecting sensitive data.
+ */
+export const WAITLIST_FORMSPREE_ID: string = "xjyvkqze";
+export const WAITLIST_ADMIN_PASSWORD = "bougie-founding-2026";
 
 export const NAV_LINKS = [
   { label: "Home", href: "/" },

@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Menu, Phone, X } from "lucide-react";
+import { Menu, Phone, Sparkles, X } from "lucide-react";
 import { BUSINESS, CTA_LINK, NAV_LINKS } from "@/lib/constants";
 import { cn } from "@/lib/utils";
 import {
@@ -79,6 +79,21 @@ export function MobileNav() {
               }
             >
               {CTA_LINK.label}
+            </SheetClose>
+            <SheetClose
+              nativeButton={false}
+              render={
+                <Button
+                  variant="outline"
+                  size="lg"
+                  className="h-12 w-full gap-2 rounded-full border-[#c9a227]/50 bg-[#f2dfa8]/30 text-base font-semibold text-[#8a6d10] hover:bg-[#f2dfa8]/50"
+                  nativeButton={false}
+                  render={<Link href="/waitlist" />}
+                />
+              }
+            >
+              <Sparkles className="h-4 w-4" />
+              Join the Waitlist
             </SheetClose>
             <a href={BUSINESS.phoneHref} className="flex items-center justify-center gap-2 text-sm font-medium text-ink/80">
               <Phone className="h-4 w-4" strokeWidth={1.75} />

@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { ArrowRight, Phone, Star } from "lucide-react";
+import { ArrowRight, Phone, Sparkles, Star } from "lucide-react";
 import { BUSINESS, CTA_LINK } from "@/lib/constants";
 import { HERO_IMAGES } from "@/lib/images";
 import { Button } from "@/components/ui/button";
@@ -32,6 +32,21 @@ export function HomeHero() {
       </motion.div>
 
       <div className="container-luxury relative z-10 pb-20 pt-40 sm:pb-24">
+        <motion.div
+          initial={{ opacity: 0, y: 22 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
+        >
+          <Link
+            href="/waitlist"
+            className="mb-4 inline-flex items-center gap-2 rounded-full border border-[#c9a227]/50 bg-white/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.14em] text-[#f2dfa8] backdrop-blur-sm transition-colors hover:bg-white/15"
+          >
+            <Sparkles className="h-3.5 w-3.5" />
+            Opening Soon — Join the Waitlist
+            <ArrowRight className="h-3.5 w-3.5" />
+          </Link>
+        </motion.div>
+
         <motion.div
           initial={{ opacity: 0, y: 22 }}
           animate={{ opacity: 1, y: 0 }}
