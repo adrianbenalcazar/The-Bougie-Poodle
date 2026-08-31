@@ -3,13 +3,14 @@
 import { useState } from "react";
 import { Controller, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Gift, Loader2, PartyPopper, Sparkles } from "lucide-react";
-import { waitlistSchema, type WaitlistValues } from "@/lib/validations";
+import { Loader2 } from "lucide-react";
+import { waitlistSchema, COAT_CONDITIONS, type WaitlistValues } from "@/lib/validations";
 import { WAITLIST_FORMSPREE_ID } from "@/lib/constants";
 import { recordWaitlistEntry, formatMemberNumber, type WaitlistEntry } from "@/lib/waitlist";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
+import { Checkbox } from "@/components/ui/checkbox";
 import {
   Select,
   SelectContent,
@@ -38,7 +39,10 @@ export function WaitlistForm() {
     handleSubmit,
     reset,
     formState: { errors, isSubmitting },
-  } = useForm<WaitlistValues>({ resolver: zodResolver(waitlistSchema) });
+  } = useForm<WaitlistValues>({
+    resolver: zodResolver(waitlistSchema),
+    defaultValues: { coatCondition: [] },
+  });
 
   async function onSubmit(values: WaitlistValues) {
     setSubmitError(null);
@@ -62,29 +66,16 @@ export function WaitlistForm() {
   if (entry) {
     return (
       <div className="flex flex-col items-center gap-4 rounded-3xl border border-[#c9a227]/40 bg-gradient-to-b from-[#fbf3de] to-white px-8 py-14 text-center">
-        <span className="flex items-center gap-1.5 rounded-full border border-[#c9a227]/50 bg-[#f2dfa8]/50 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.18em] text-[#8a6d10]">
-          <Sparkles className="h-3.5 w-3.5" />
-          Founding Membership
+        <span className="rounded-full border border-[#c9a227]/50 bg-[#f2dfa8]/50 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.18em] text-[#8a6d10]">
+          You&apos;re on the list
         </span>
         <p className="font-display text-5xl text-[#c9a227]">{formatMemberNumber(entry.memberNumber)}</p>
         <h3 className="font-display text-2xl text-ink">
           You&apos;re in, {entry.dogName}!
         </h3>
         <p className="max-w-sm text-sm leading-relaxed text-stone">
-          You&apos;ve just secured founding-member pricing, priority access to our opening schedule, and a welcome
-          gift for {entry.dogName}&apos;s very first visit. Keep an eye on your inbox — we&apos;ll be in touch as
-          opening day gets closer.
+          {`That's you and ${entry.dogName} locked in. When I start booking, I'll be calling people on this list first — so keep an eye on your phone.`}
         </p>
-        <div className="mt-1 flex items-center gap-4 text-xs text-stone">
-          <span className="flex items-center gap-1.5">
-            <PartyPopper className="h-4 w-4 text-[#c9a227]" strokeWidth={1.6} />
-            Founding pricing
-          </span>
-          <span className="flex items-center gap-1.5">
-            <Gift className="h-4 w-4 text-[#c9a227]" strokeWidth={1.6} />
-            Welcome gift
-          </span>
-        </div>
         <Button variant="outline" className="mt-2 rounded-full border-ink/15" onClick={() => setEntry(null)}>
           Add another dog
         </Button>
@@ -122,38 +113,79 @@ export function WaitlistForm() {
 
       <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
         <div className="space-y-1.5">
-          <Label htmlFor="wl-breed-size">Dog&apos;s breed / size</Label>
-          <Input id="wl-breed-size" placeholder="Standard Poodle, Medium" {...register("breedSize")} />
-          <FieldError message={errors.breedSize?.message} />
+          <Label htmlFor="wl-breed">Dog&apos;s breed</Label>
+          <Input id="wl-breed" placeholder="Standard Poodle" {...register("breed")} />
+          <FieldError message={errors.breed?.message} />
         </div>
+        <div className="space-y-1.5">
+          <Label htmlFor="wl-weight">Weight</Label>
+          <Input id="wl-weight" placeholder="45 lbs" {...register("weight")} />
+          <FieldError message={errors.weight?.message} />
+        </div>
+      </div>
+
+      <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
         <div className="space-y-1.5">
           <Label htmlFor="wl-zip">ZIP code</Label>
           <Input id="wl-zip" inputMode="numeric" placeholder="10566" {...register("zip")} />
           <FieldError message={errors.zip?.message} />
         </div>
+        <div className="space-y-1.5">
+          <Label htmlFor="wl-day">Preferred day</Label>
+          <Controller
+            control={control}
+            name="dayPreference"
+            render={({ field }) => (
+              <Select value={field.value ?? ""} onValueChange={field.onChange}>
+                <SelectTrigger id="wl-day" className="h-10 w-full">
+                  <SelectValue placeholder="Select a preferred day" />
+                </SelectTrigger>
+                <SelectContent>
+                  {DAY_PREFERENCES.map((option) => (
+                    <SelectItem key={option} value={option}>
+                      {option}
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
+            )}
+          />
+          <FieldError message={errors.dayPreference?.message} />
+        </div>
       </div>
 
-      <div className="space-y-1.5">
-        <Label htmlFor="wl-day">Preferred day</Label>
+      <div className="space-y-2.5">
+        <Label>
+          Coat condition <span className="font-normal text-stone">(optional)</span>
+        </Label>
         <Controller
           control={control}
-          name="dayPreference"
+          name="coatCondition"
           render={({ field }) => (
-            <Select value={field.value ?? ""} onValueChange={field.onChange}>
-              <SelectTrigger id="wl-day" className="h-10 w-full">
-                <SelectValue placeholder="Select a preferred day" />
-              </SelectTrigger>
-              <SelectContent>
-                {DAY_PREFERENCES.map((option) => (
-                  <SelectItem key={option} value={option}>
-                    {option}
-                  </SelectItem>
-                ))}
-              </SelectContent>
-            </Select>
+            <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
+              {COAT_CONDITIONS.map((condition) => {
+                const checked = field.value?.includes(condition) ?? false;
+                return (
+                  <label
+                    key={condition}
+                    className="flex items-center gap-2 rounded-lg border border-sand bg-white px-3 py-2.5 text-sm text-ink"
+                  >
+                    <Checkbox
+                      checked={checked}
+                      onCheckedChange={(value) => {
+                        const current = field.value ?? [];
+                        field.onChange(
+                          value ? [...current, condition] : current.filter((c) => c !== condition),
+                        );
+                      }}
+                    />
+                    {condition}
+                  </label>
+                );
+              })}
+            </div>
           )}
         />
-        <FieldError message={errors.dayPreference?.message} />
       </div>
 
       <FieldError message={submitError ?? undefined} />

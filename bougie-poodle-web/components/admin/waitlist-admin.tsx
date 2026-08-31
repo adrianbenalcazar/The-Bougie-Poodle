@@ -128,7 +128,7 @@ export function WaitlistAdmin() {
         </p>
       ) : (
         <div className="overflow-x-auto rounded-2xl border border-sand/70 bg-white">
-          <table className="w-full min-w-[860px] text-left text-sm">
+          <table className="w-full min-w-[1080px] text-left text-sm">
             <thead>
               <tr className="border-b border-sand/60 text-xs font-medium uppercase tracking-wide text-stone">
                 <th className="px-4 py-3">#</th>
@@ -136,9 +136,11 @@ export function WaitlistAdmin() {
                 <th className="px-4 py-3">Dog</th>
                 <th className="px-4 py-3">Email</th>
                 <th className="px-4 py-3">Phone</th>
-                <th className="px-4 py-3">Breed / Size</th>
+                <th className="px-4 py-3">Breed</th>
+                <th className="px-4 py-3">Weight</th>
                 <th className="px-4 py-3">ZIP</th>
                 <th className="px-4 py-3">Preferred Day</th>
+                <th className="px-4 py-3">Coat Condition</th>
                 <th className="px-4 py-3">Submitted</th>
               </tr>
             </thead>
@@ -150,9 +152,11 @@ export function WaitlistAdmin() {
                   <td className="px-4 py-3">{entry.dogName}</td>
                   <td className="px-4 py-3">{entry.email}</td>
                   <td className="px-4 py-3">{entry.phone}</td>
-                  <td className="px-4 py-3">{entry.breedSize}</td>
+                  <td className="px-4 py-3">{entry.breed}</td>
+                  <td className="px-4 py-3">{entry.weight}</td>
                   <td className="px-4 py-3">{entry.zip}</td>
                   <td className="px-4 py-3">{entry.dayPreference}</td>
+                  <td className="px-4 py-3">{(entry.coatCondition ?? []).join(", ") || "—"}</td>
                   <td className="px-4 py-3 text-stone">{new Date(entry.submittedAt).toLocaleString()}</td>
                 </tr>
               ))}

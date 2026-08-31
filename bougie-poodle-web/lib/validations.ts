@@ -54,16 +54,27 @@ export const newsletterSchema = z.object({
 
 export type NewsletterValues = z.infer<typeof newsletterSchema>;
 
+export const COAT_CONDITIONS = [
+  "Matted / tangled",
+  "Long / overdue for a trim",
+  "Sheds a lot",
+  "Sensitive skin or allergies",
+  "Hot spots or skin irritation",
+  "None of the above / just a regular groom",
+] as const;
+
 export const waitlistSchema = z.object({
   ownerName: z.string().trim().min(2, "Please enter your name."),
   dogName: z.string().trim().min(1, "Please enter your dog's name."),
   email: z.email("Please enter a valid email address."),
   phone: z.string().trim().min(10, "Please enter a valid phone number."),
-  breedSize: z.string().trim().min(1, "Please tell us your dog's breed or size."),
+  breed: z.string().trim().min(1, "Please tell us your dog's breed."),
+  weight: z.string().trim().min(1, "Please tell us your dog's weight."),
   zip: z.string().trim().regex(/^\d{5}$/, "Please enter a valid 5-digit ZIP code."),
   dayPreference: z.enum(["Weekday mornings", "Weekday afternoons", "Weekends"], {
     error: "Please select a preferred day.",
   }),
+  coatCondition: z.array(z.enum(COAT_CONDITIONS)).optional(),
 });
 
 export type WaitlistValues = z.infer<typeof waitlistSchema>;

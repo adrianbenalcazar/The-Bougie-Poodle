@@ -54,9 +54,11 @@ export function waitlistEntriesToCsv(entries: WaitlistEntry[]): string {
     "Dog Name",
     "Email",
     "Phone",
-    "Breed / Size",
+    "Breed",
+    "Weight",
     "ZIP Code",
     "Day Preference",
+    "Coat Condition",
     "Submitted At",
   ];
   const rows = entries.map((e) => [
@@ -65,9 +67,11 @@ export function waitlistEntriesToCsv(entries: WaitlistEntry[]): string {
     e.dogName,
     e.email,
     e.phone,
-    e.breedSize,
+    e.breed,
+    e.weight,
     e.zip,
     e.dayPreference,
+    (e.coatCondition ?? []).join("; "),
     e.submittedAt,
   ]);
   const escape = (v: string) => `"${v.replace(/"/g, '""')}"`;
